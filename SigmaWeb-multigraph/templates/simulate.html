@@ -1,0 +1,233 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="en-US"> 
+
+<head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+	<title>{{ info['team'] }}</title> 
+
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+</head> 
+
+<body background="ski2.jpg"> 
+    % include navbar data={"info": info, "__simulate": "active", "__results": ""}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="page-header">
+                    <img id="logo" border="100" src="logo2.png" alt="Logo" width="75" height="60"></img>
+                    <h1>Your Simulation <small>Add Run Parameters:<small></h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span6">
+                <form class="well" method="post">
+                    <div class="control-group">
+                         <label class="control-label">{{ sigma['runtime']['display'] }}</label>
+                         <div class="controls">
+                            <input type="text" name="{{ sigma['runtime']['name'] }}" value="{{ sigma['runtime']['default'] }}">
+                         </div>
+                     </div>
+                    % for param in sigma['parameters']:
+						% if not "[" in param['name']:
+						<div class="control-group">
+							
+							 <label class="control-label">{{ param['display'] }}</label>
+							 <div class="controls">
+								<input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}">
+							 </div>
+						</div>
+						 %end
+                     % end
+					
+					<div class="control-group">
+						 <label class="control-label"> Time to go down slope from Lifts to Lifts </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "SKI" in param['name']:
+									% if ";0" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if ";2" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Probability a skiier goes from Lifts to Lifts </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "PR" in param['name']:
+									% if ";0" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if ";2" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Interarrival Times for Chairs of the Ski Lifts </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "LAMBDA" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Seats per Chair of the Ski Lifts </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "B[" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Time It Takes to Travel Up Ski Lifts </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "TS[" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Alpha Values for the Beta Distributions </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "ALPHA" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Beta Values for the Beta Distributions </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "BETA" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<div class="control-group">
+						 <label class="control-label"> Multipliers for the Beta Distributions </label>
+						 <div class="controls">	
+							 <table>
+							% for param in sigma['parameters']:
+								% if "MULT" in param['name']:
+									% if "[0]" in param['name']:
+									<tr>
+									% end
+										<div class="controls">
+											<td><input type="text" name="{{ param['name'] }}" value="{{ param['default'] }}" style="width: 40px;"></td>
+										</div>
+									% if "[2]" in param['name']:
+									</tr>
+									% end
+								% end
+							% end
+							</table>
+						</div>
+					</div>
+					
+					<script type="text/javascript">
+						$("#mybuttonid").click(function() {newsize = $("#myinputboxid").val()})
+					</script>
+					
+					<input class="btn btn-large btn-block btn-primary" type="submit" value="Run Simulation">
+                </form>
+            </div>
+            
+			<div class="span6">
+                <div class="well">
+                    <p>{{!info['additional']}} </p>
+                </div>
+            </div>
+        </div>
+   </div>
+</body> 
+</html> 
+ 

@@ -1,0 +1,44 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="en-US"> 
+
+<head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+	<title>{{ info['team'] }}</title> 
+
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+
+</head> 
+
+<body background="ski2.jpg"> 
+    % include navbar data={"info": info, "__simulate": "", "__results": ""}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="hero-unit">
+                <h1>Welcome to {{ info['team'] }}!</h1>
+                <p>{{!info['description']}}</p>
+                <p>By {{ info['members'] }}</p>
+				<p><div class="control-group">
+					 <label class="control-label2">{{ sigma['resort_name']['display'] }}</label>
+					 <div class="controls">
+						<input type="text" name="{{ sigma['resort_name']['name'] }}" value="{{ sigma['resort_name']['default'] }}">
+					 </div>
+				 </div></p>
+				 <p><div class="control-group">
+				 	 <label class="control-label2">{{ sigma['ski_lift_number']['display'] }}</label>
+					 <div class="controls">
+						<input type="text" name="{{ sigma['ski_lift_number']['name']}}" value="{{ sigma['ski_lift_number']['default'] }}">
+					 </div>
+				 </div	></p>
+                <p> <a href="/simulate" class="btn btn-primary btn-large">Let's Get Started</a> </p>
+                </div>
+            </div>
+        </div>
+   </div>
+</body> 
+</html> 
+ 

@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html dir="ltr" lang="en-US"> 
+<head> 
+<!-- SigmaWeb By Sanketh Katta --> 
+	<meta charset="utf-8" /> 
+	<title>{{ info['team'] }}</title> 
+
+	<!-- Stylesheets --> 
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/> 
+	<link rel="stylesheet" type="text/css" href="sigmaweb.css"/> 
+	<link rel="stylesheet" type="text/css" href="nv.d3.css"/> 
+
+	<!-- JavaScripts --> 
+	<script type="text/javascript" src="d3.v2.min.js"></script> 
+	<script type="text/javascript" src="nv.d3.min.js"></script> 
+    <script type="text/javascript" src="lineWithFocusChart.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var bind = {{!bind}};
+    </script>
+</head> 
+
+<body background="ski2.jpg"> 
+    % include navbar data={"info": info, "__simulate": "", "__results": "active"}
+    
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="page-header">
+                    <img id="logo" border="100" src="logo2.png" alt="Logo" width="75" height="60"></img>
+                    <h1>Display Outputs   <small>Results of Your Simulation: <small> <a id="view_param" href="#myModal" role="button" class="btn" data-toggle="modal">View Run Parameters</a>
+</h1>
+                </div>
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3>Run Parameters</h3>
+                    </div>
+                     <div class="modal-body">
+                        <table id="run_parameters" class="table table-striped">
+                            <tbody>
+                            % for param in settings_params:
+                            <tr><td><span>{{param['display']}}:</span></td><td>{{parameters[param['name']]}}</td></tr>
+                            % end
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+
+                <div id="charts" class = "well">
+				% for i in range(len(bind['graphs'])):
+                    <h3>{{ bind['graphs'][i]['graph_name'] }}</h3>
+                    <svg id="chart{{i}}" style="height:500px"></svg>
+                % end
+                </div>
+                <script type="text/javascript" src="sigmaweb.js"></script>
+            </div>
+        </div>
+   </div>
+</body> 
+</html> 
+ 

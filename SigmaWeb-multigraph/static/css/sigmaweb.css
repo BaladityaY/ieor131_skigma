@@ -1,0 +1,48 @@
+body {
+    padding-top: 55px;
+}
+
+#view_param {
+    float: right;
+}
+
+#run_parameters td {
+    font-size: 15px;
+}
+
+#run_parameters td span {
+    font-weight: bold;
+}
+.control-label1
+{
+	text-align:center;
+	color:white;
+	font-weight: bold;
+}
+.page-header
+{
+	color:white;
+	
+}
+.form-horizontal
+{
+	background-color: white;
+	opacity: .9;
+	-moz-border-radius: 15px;
+}
+#logo{
+	position:relative;
+	top:60px;
+	right:100px;
+
+}
+
+#header{
+	position:relative;
+	left:100px;
+	
+}		
+body {
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
